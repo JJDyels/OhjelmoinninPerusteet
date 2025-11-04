@@ -1,0 +1,36 @@
+Varausnumero: 001
+Varaaja: Anna Virtanen
+Päivämäärä: 31.10.2025
+Aloitusaika: 13:00
+Tuntimäärä: 2
+Tuntihinta: 19,95 €
+Kokonaishinta: 39,90 €
+Maksettu: Kyllä
+Kohde: Kokoustila C
+Puhelin: 0401234567
+Sähköposti: anna.virtanen@example.com
+--------------------------------------------------
+Varausnumero: 002
+Varaaja: Matti Kolehmainen
+Päivämäärä: 02.11.2025
+Aloitusaika: 10:00
+Tuntimäärä: 1
+Tuntihinta: 19,95 €
+Kokonaishinta: 19,95 €
+Maksettu: Ei
+Kohde: Kokoustila A
+Puhelin: 0441231122
+Sähköposti: matti.koleh@example.com
+--------------------------------------------------
+Varausnumero: 003
+Varaaja: Johanna Saari
+Päivämäärä: 02.11.2025
+Aloitusaika: 10:15
+Tuntimäärä: 3
+Tuntihinta: 19,95 €
+Kokonaishinta: 59,85 €
+Maksettu: Kyllä
+Kohde: Koukoustila B
+Puhelin: 0405512320
+Sähköposti: j.saari@smail.com
+--------------------------------------------------
