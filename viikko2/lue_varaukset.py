@@ -45,11 +45,14 @@ def main():
             mtunthinta = tunthinta.replace(".", ",")
             mkokonaishinta = f"{kokonaishinta:.2f}".replace(".", ",")
 
-
              # Muutetaan maksettu tieto luettavampaan muotoon
             maksettu = "Kyllä" if maksu == "True" else "Ei"
 
-    
+             # Muutetaan päivämäärän muotoon dd.mm.yyyy
+            from datetime import datetime
+            dt = datetime.strptime(paivamaara, "%Y-%m-%d")
+            paivamaara = dt.strftime("%d.%m.%Y")
+
              # Tulostetaan jäsennellyt tiedot
             print("Varausnumero:", varausId)
             print("Varaaja:", varaaja)
