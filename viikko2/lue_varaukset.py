@@ -50,15 +50,22 @@ def main():
             maksettu = "Kyllä" if maksu == "True" else "Ei"
 
              # Muutetaan päivämäärän muotoon dd.mm.yyyy
-            from datetime import datetime
+            from datetime import datetime, timedelta
             dt = datetime.strptime(paivamaara, "%Y-%m-%d")
             paivamaara = dt.strftime("%d.%m.%Y")
+
+            
+            aloitus_dt = datetime.strptime(aloitusaika, "%H:%M") # Muutetaan muotoon datetime
+            lopetus_dt = aloitus_dt + timedelta(hours=int(tuntimaara)) # Lisätään tuntimäärä
+            lopetusaika = lopetus_dt.strftime("%H:%M") # Muutetaan takaisin merkkijonoksi
+
 
              # Tulostetaan jäsennellyt tiedot
             print("Varausnumero:", varausId)
             print("Varaaja:", varaaja)
             print("Päivämäärä:", paivamaara)
             print("Aloitusaika:", aloitusaika)
+            print("Lopetusaika:", lopetusaika)
             print("Tuntimäärä:", tuntimaara)
             print("Tuntihinta:", mtunthinta, "€")
             print("Kokonaishinta:", mkokonaishinta, "€")
@@ -73,6 +80,7 @@ def main():
             out.write(f"Varaaja: {varaaja}\n")
             out.write(f"Päivämäärä: {paivamaara}\n")
             out.write(f"Aloitusaika: {aloitusaika}\n")
+            out.write(f"Lopetusaika: {lopetusaika}\n")
             out.write(f"Tuntimäärä: {tuntimaara}\n")
             out.write(f"Tuntihinta: {mtunthinta} €\n")
             out.write(f"Kokonaishinta: {mkokonaishinta} €\n")

@@ -2,6 +2,7 @@ Varausnumero: 001
 Varaaja: Anna Virtanen
 Päivämäärä: 31.10.2025
 Aloitusaika: 13:00
+Lopetusaika: 15:00
 Tuntimäärä: 2
 Tuntihinta: 19,95 €
 Kokonaishinta: 39,90 €
@@ -14,6 +15,7 @@ Varausnumero: 002
 Varaaja: Matti Kolehmainen
 Päivämäärä: 02.11.2025
 Aloitusaika: 10:00
+Lopetusaika: 11:00
 Tuntimäärä: 1
 Tuntihinta: 19,95 €
 Kokonaishinta: 19,95 €
@@ -26,6 +28,7 @@ Varausnumero: 003
 Varaaja: Johanna Saari
 Päivämäärä: 02.11.2025
 Aloitusaika: 10:15
+Lopetusaika: 13:15
 Tuntimäärä: 3
 Tuntihinta: 19,95 €
 Kokonaishinta: 59,85 €
