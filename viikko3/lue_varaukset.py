@@ -18,48 +18,48 @@ Sähköposti: anna.virtanen@example.com
 """
 from datetime import datetime
 
-def hae_varausnumero(varaus):
+def hae_varausnumero(varaus: list[str]) -> int:
     varausnumero = int(varaus[0])
     return varausnumero
 
-def hae_varaaja(varaus):
+def hae_varaaja(varaus: list[str]) -> str:
     nimi = varaus[1]
     return nimi
 
-def hae_paiva(varaus):
+def hae_paiva(varaus: list[str]) -> str:
     paiva = datetime.strptime(varaus[2], "%Y-%m-%d").strftime("%d.%m.%Y")
     return paiva
 
-def hae_aloitusaika(varaus):
+def hae_aloitusaika(varaus: list[str]) -> str:
     aloitusaika = datetime.strptime(varaus[3], "%H:%M").strftime("%H.%M")
     return aloitusaika
 
-def hae_tuntimaara(varaus):
+def hae_tuntimaara(varaus: list[str]) -> int:
     tuntimaara = int(varaus[4])
     return tuntimaara
 
-def hae_tuntihinta(varaus):
+def hae_tuntihinta(varaus: list[str]) -> float:
     tuntihinta = float(varaus[5])
     return tuntihinta
 
-def laske_kokonaishinta(varaus):
+def laske_kokonaishinta(varaus: list[str]) -> float:
     kokonaishinta = hae_tuntimaara(varaus) * hae_tuntihinta(varaus)
     return kokonaishinta
 
-def hae_maksettu(varaus):
+def hae_maksettu(varaus: list[str]) -> str:
     maksettu = varaus[6]
     maksu = "Kyllä" if maksettu == "True" else "Ei"
     return maksu
 
-def hae_kohde(varaus):
+def hae_kohde(varaus: list[str]) -> str:
     kohde = varaus[7]
     return kohde
 
-def hae_puhelin(varaus):
+def hae_puhelin(varaus: list[str]) -> str:
     puhelin = varaus [8]
     return puhelin
 
-def hae_sahkoposti(varaus):
+def hae_sahkoposti(varaus: list[str]) -> str:
     sahkoposti = varaus[9]
     return sahkoposti
 
@@ -74,8 +74,8 @@ def tulosta_varaus(varaus):
     print("Kokonaishinta:", f"{laske_kokonaishinta(varaus):.2f}".replace(".",","), "€")
     print(f"Maksettu: {hae_maksettu(varaus)}")
     print(f"Kohde: {hae_kohde(varaus)}")
-    print(f"Kohde: {hae_puhelin(varaus)}")
-    print(f"Kohde: {hae_sahkoposti(varaus)}")
+    print(f"Puhelin: {hae_puhelin(varaus)}")
+    print(f"Sähköposti: {hae_sahkoposti(varaus)}")
     
 
 def main():
@@ -102,3 +102,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# Tarkista datatyyppi bash terminaalissa komennolla: python -m mypy lue_varaukset.py
+# TarvitsetTarkista että mypy asennettuna: pip install mypy
