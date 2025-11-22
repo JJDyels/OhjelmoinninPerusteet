@@ -104,4 +104,4 @@ if __name__ == "__main__":
     main()
 
 # Tarkista datatyyppi bash terminaalissa komennolla: python -m mypy lue_varaukset.py
-# TarvitsetTarkista että mypy asennettuna: pip install mypy
+# Tarkista että mypy asennettuna: pip install mypy
