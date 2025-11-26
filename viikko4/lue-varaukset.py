@@ -55,18 +55,79 @@ def hae_varaukset(varaustiedosto: str) -> list:
             varaukset.append(muunna_varaustiedot(varaustiedot))
     return varaukset
 
+def vahvistetut_varaukset(varaukset: list) -> list:
+
+    vahvistetut = []
+    for vahvistettu in varaukset:
+        if (vahvistettu[8] is True):
+            vahvistetut.append(vahvistettu)
+    return vahvistetut
+
+def pitkat_varaukset(varaukset: list) -> list:
+    
+    pitkät = []
+    for varaus in varaukset[1:]: # ohitetaan otskikko rivin Int
+        if (varaus[6] >= 3):
+            pitkät.append(varaus)
+    return pitkät
+
+def vahvistus_status(varaukset: list) -> list:
+    
+    status_lista = []
+    for varaus in varaukset[1:]: # ohitetaan otsikko rivi
+        if varaus[8] is True:
+            status = "Vahvistettu"
+        else:
+            status = "Ei vahvistettu"
+        status_lista.append((varaus[1], status))
+    return status_lista
+
+def yhteenveto_vahvistuksista(varaukset: list) -> int:
+
+    vahvistettu_lkm = 0
+    vahvistamaton_lkm = 0
+    for varaus in varaukset[1:]:  # ohitetaan otsikko rivi
+        if varaus[8] is True:
+            vahvistettu_lkm += 1
+        else:
+            vahvistamaton_lkm += 1
+    return vahvistettu_lkm, vahvistamaton_lkm
+
+def vahvistettujen_tulo(varaukset: list) -> float:
+
+    yhteistulo = 0.0
+    for varaus in varaukset[1:]:
+        if varaus[8] is True:
+            yhteistulo += varaus[7] * varaus[6]
+    return yhteistulo
+
 def main():
     # HUOM! seuraaville riveille ei tarvitse tehdä mitään osassa A!
     # Osa B vaatii muutoksia -> Esim. tulostuksien (print-funktio) muuttamisen.
     # Kutsutaan funkioita hae_varaukset, joka palauttaa kaikki varaukset oikeilla tietotyypeillä
     varaukset = hae_varaukset(varaustiedosto="varaukset.txt")
-    print(" | ".join(varaukset[0]))
-    print("------------------------------------------------------------------------")
-    for varaus in varaukset[1:]:
-        print(" | ".join(str(x) for x in varaus))
-        tietotyypit = [type(x).__name__ for x in varaus]
-        print(" | ".join(tietotyypit))
-        print("------------------------------------------------------------------------")
+
+    print("\n1) Vahvistetut varaukset:")
+    for varaus in vahvistetut_varaukset(varaukset):
+       print(f"{'-'} {varaus[1]} , {varaus[9]} , {varaus[4].strftime('%d.%m.%Y')} , {"klo"} {varaus[5].strftime('%H.%M')} ")
+    
+    print("\n2) Pitkät varaukset (> 3 h):")
+    for varaus in pitkat_varaukset(varaukset):
+        print(f"{'-'} {varaus[1]} , {varaus[4].strftime('%d.%m.%Y')} , {"klo"} {varaus[5].strftime("%H.%M")} , {'kesto'} {varaus[6]} {'h'} , {varaus[9]}")
+    
+    print("\n3) Varausten vahvistusstatus:")
+    for varaus, status in vahvistus_status(varaukset):
+        print(f"{'-'} {varaus} {'->'} {status}")
+
+    print("\n4) Yhteenveto vahvistuksista:")
+    vahvistettu_lkm, vahvistamaton_lkm = yhteenveto_vahvistuksista(varaukset)
+    print(f"Vahvistettuja varauksia: {vahvistettu_lkm} {'kpl'}")
+    print(f"Ei-vahvistettuja varauksia: {vahvistamaton_lkm} {'kpl'}")
+
+    print("\n5) Vahvistettujen varausten kokonaistulot:")
+    yhteistulo = vahvistettujen_tulo(varaukset)
+    print(f"Vahvistettujen varausten kokonaistulot: {str(f'{yhteistulo:.2f}').replace('.', ',')} €")
+
 
 if __name__ == "__main__":
     main()
