@@ -74,7 +74,7 @@ def pitkat_varaukset(varaukset: list) -> list:
 def vahvistus_status(varaukset: list) -> list:
     
     status_lista = []
-    for varaus in varaukset[1:]: # ohitetaan otsikko rivi
+    for varaus in varaukset[1:]:
         if varaus[8] is True:
             status = "Vahvistettu"
         else:
@@ -86,7 +86,7 @@ def yhteenveto_vahvistuksista(varaukset: list) -> int:
 
     vahvistettu_lkm = 0
     vahvistamaton_lkm = 0
-    for varaus in varaukset[1:]:  # ohitetaan otsikko rivi
+    for varaus in varaukset[1:]:
         if varaus[8] is True:
             vahvistettu_lkm += 1
         else:
@@ -102,8 +102,7 @@ def vahvistettujen_tulo(varaukset: list) -> float:
     return yhteistulo
 
 def main():
-    # HUOM! seuraaville riveille ei tarvitse tehdä mitään osassa A!
-    # Osa B vaatii muutoksia -> Esim. tulostuksien (print-funktio) muuttamisen.
+
     # Kutsutaan funkioita hae_varaukset, joka palauttaa kaikki varaukset oikeilla tietotyypeillä
     varaukset = hae_varaukset(varaustiedosto="varaukset.txt")
 
