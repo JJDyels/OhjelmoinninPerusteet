@@ -90,7 +90,7 @@ def vuoden_yhteenveto(tiedot: list, vuosi: int) -> list:
     ]
 
 def raportin_luonti(paavalikko: bool, alavalikko: bool) -> list:
-    """ Kysyy käyttäjältä millainen raportti luodaan"""
+    """ Kysyy käyttäjältä millainen raportti luodaan ja nitä tehdään raportin luonnin jälkeen"""
 
     while paavalikko:
         print("-"*40)
@@ -161,9 +161,9 @@ def raportin_luonti(paavalikko: bool, alavalikko: bool) -> list:
                 continue
 
         if ala_valinta == 1:
-            return 1, None # Kirjoita raportti tiedostoon
+            return 1, None
                 
-        elif ala_valinta == 2: # Luo uusi raportti
+        elif ala_valinta == 2:
             return 2, None
             
         elif ala_valinta == 3:
@@ -210,7 +210,6 @@ def main():
         ala_valinta, _ = raportin_luonti(False, True)
         
         if ala_valinta == 1:
-            # Kirjoita raportti tiedostoon raportti.txt
             with open("raportti.txt", "w", encoding="utf-8") as f:
                 f.write(otsikko + "\n")
                 f.write("=" * len(otsikko) + "\n")
@@ -218,11 +217,9 @@ def main():
             print("Raportti kirjoitettu tiedostoon raportti.txt\n")
             
         elif ala_valinta == 2:
-            # Luo uusi raportti - jatka silmukkaa
             continue
             
         elif ala_valinta == 3:
-            # Lopeta ohjelma
             break
 
 
